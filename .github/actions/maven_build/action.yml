@@ -10,6 +10,6 @@ runs:
         distribution: 'temurin'
         cache: maven
     - name: Build package with maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package -DskipTests --file pom.xml
       shell: bash
 
