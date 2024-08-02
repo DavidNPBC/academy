@@ -23,6 +23,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Set up JDK 21
       uses: actions/setup-java@v4
+      uses: DavidNPBC/academy/.github/actions/maven_build@main
       with:
         java-version: '21'
         distribution: 'temurin'
@@ -33,6 +34,5 @@ jobs:
       run: docker build . --file src/main/docker/Dockerfile.jvm  --tag academy:$(date +%s)
     - name: Find Docker image
       run: docker images|grep academy
-      uses: DavidNPBC/academy/.github/actions/maven_build@main
 
 
