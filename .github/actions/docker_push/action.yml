@@ -1,0 +1,17 @@
+name: 'Docker Push'
+description: 'Push Docker image to Docker Hub'
+inputs:
+  docker_username:
+    description: 'Docker Hub username'
+    required: true
+  image_name:
+    description: 'Docker image name'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        echo ${{ inputs.docker_username }} | docker login -u ${{ inputs.docker_username }} --password-stdin
+        docker tag $DOCKER_IMAGE_NAME ${{ inputs.docker_username }}/${{ inputs.image_name }}
+        docker push ${{ inputs.docker_username }}/${{ inputs.image_name }}
+
