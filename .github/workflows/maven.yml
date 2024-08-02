@@ -31,3 +31,8 @@ jobs:
       run: mvn -B package -DskipTests --file pom.xml
     - name: Create new docker image
       run: docker build . --file src/main/docker/Dockerfile.jvm  --tag academy:$(date +%s)
+    - name: Find Docker image
+      run: docker images|grep academy
+
+
+
