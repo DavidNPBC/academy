@@ -33,6 +33,7 @@ jobs:
       run: docker build . --file src/main/docker/Dockerfile.jvm  --tag academy:$(date +%s)
     - name: Find Docker image
       run: docker images|grep academy
-    - name: Custom action
+    - name: Custom action maven
       uses: DavidNPBC/academy/.github/actions/maven_build@main
-
+    - name: Custom action docker
+      uses: DavidNPBC/academy/.github/actions/docker_build@main
