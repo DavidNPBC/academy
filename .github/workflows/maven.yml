@@ -41,4 +41,8 @@ jobs:
         path_dockerfile: src/main/docker/Dockerfile.jvm
         image_name: academy
     - name: List Docker Images
-      run: docker images
+      run: docker image
+    - uses: DavidNPBC/academy/.github/actions/docker_push@main
+      with: 
+        docker_username: $ {{ secrets.DOCKERHUB_USERNAME  }}
+        image_name: academy 
