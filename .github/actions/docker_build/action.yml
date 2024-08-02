@@ -14,6 +14,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Find Docker image
+      run: docker images|grep academy
+      shell: bash
     - run: |
         if [ -z "${{ inputs.tag_name }}" ]; then
           TAG=$(date +%s)

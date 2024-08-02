@@ -35,11 +35,6 @@ jobs:
          dockerfile_path: src/main/docker/Dockerfile.jvm
          image_name: academy
 
-    - name: Find Docker image
-      run: docker images|grep academy
-
-    - name: List Docker Images
-      run: docker image
     - uses: DavidNPBC/academy/.github/actions/docker_push@main
       with: 
         docker_username: ${{ secrets.DOCKERHUB_USERNAME  }}
