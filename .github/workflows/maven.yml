@@ -34,5 +34,5 @@ jobs:
     - name: Find Docker image
       run: docker images|grep academy
     - name: Custom action
-      uses: DavidNPBC/academy/.github/actions/docker_build@main
+      uses: DavidNPBC/academy/.github/actions/maven_build@main
 
