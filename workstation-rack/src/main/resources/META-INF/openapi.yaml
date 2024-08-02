@@ -1,0 +1,350 @@
+---
+openapi: 3.0.3
+info:
+  title: workstation-rack API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /workstation/booking:
+    get:
+      tags:
+      - Booking Resource
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Booking Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookingDTO"
+      responses:
+        "200":
+          description: OK
+  /workstation/booking/{id}:
+    get:
+      tags:
+      - Booking Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      tags:
+      - Booking Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Booking"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Booking Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /workstation/racks:
+    get:
+      tags:
+      - Rack Resource
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Rack Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RackDTO"
+      responses:
+        "200":
+          description: OK
+  /workstation/racks/{id}:
+    get:
+      tags:
+      - Rack Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      tags:
+      - Rack Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Rack"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Rack Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /workstation/teams:
+    get:
+      tags:
+      - Team Resource
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Team Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamDTO"
+      responses:
+        "200":
+          description: OK
+  /workstation/team-members:
+    get:
+      tags:
+      - Team Member Resource
+      responses:
+        "200":
+          description: OK
+    post:
+      tags:
+      - Team Member Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamMemberDTO"
+      responses:
+        "200":
+          description: OK
+  /workstation/team-members/{id}:
+    get:
+      tags:
+      - Team Member Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      tags:
+      - Team Member Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamMember"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Team Member Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+  /workstation/teams/{id}:
+    get:
+      tags:
+      - Team Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+    put:
+      tags:
+      - Team Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Team"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Team Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Booking:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        rackId:
+          format: int64
+          type: integer
+        requesterId:
+          format: int64
+          type: integer
+        bookFrom:
+          $ref: "#/components/schemas/LocalDateTime"
+        bookTo:
+          $ref: "#/components/schemas/LocalDateTime"
+    BookingDTO:
+      type: object
+      properties:
+        rackId:
+          format: int64
+          type: integer
+        requesterId:
+          format: int64
+          type: integer
+        bookFrom:
+          $ref: "#/components/schemas/LocalDateTime"
+        bookTo:
+          $ref: "#/components/schemas/LocalDateTime"
+    LocalDateTime:
+      format: date-time
+      type: string
+      example: 2022-03-10T12:15:50
+    Rack:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        serialNumber:
+          type: string
+        status:
+          type: string
+        teamId:
+          format: int64
+          type: integer
+    RackDTO:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        status:
+          type: string
+        teamId:
+          format: int64
+          type: integer
+    Team:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        product:
+          type: string
+    TeamDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        product:
+          type: string
+    TeamMember:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+    TeamMemberDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
