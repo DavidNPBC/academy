@@ -5,9 +5,20 @@ inputs:
     description: "Path to the Dockerfile"
     required: false
     default: "Dockerfile"
+  image_name:
+    description: 'Name of the Docker image'
+    required: true
+  tag_name:
+    description: 'Tag for the Docker image'
+    required: false
 runs:
-  using: composite
+  using: 'composite'
   steps:
     - run: |
-        echo "Update me with the necessary steps to build the application"
-      shell: bash
+        if [ -z "${{ inputs.tag_name }}" ]; then
+          TAG=$(date +%s)
+        else
+          TAG=${{ inputs.tag_name }}
+        fi
+        docker build . --file ${{ inputs.dockerfile_path }} --tag ${{ inputs.image_name }}:$TAG
+        echo "DOCKER_IMAGE_NAME=${{ inputs.image_name }}:$TAG" >> $GITHUB_ENV
