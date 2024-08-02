@@ -41,4 +41,5 @@ jobs:
       uses: DavidNPBC/academy/.github/actions/docker_push@main
       with: 
         docker_username: ${{ secrets.DOCKERHUB_USERNAME  }}
+        docker_password: ${{ secrets.DOCKERHUB_TOKEN  }}
         image_name: academy 
