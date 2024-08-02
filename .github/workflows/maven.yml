@@ -38,7 +38,7 @@ jobs:
     - name: Custom action docker
       uses: DavidNPBC/academy/.github/actions/docker_build@main
       with:
-        path_dockerfile: src/main/docker/Dockerfile.jvm
+        dockerfile_path: src/main/docker/Dockerfile.jvm
         image_name: academy
     - name: List Docker Images
       run: docker image
