@@ -24,5 +24,5 @@ runs:
         echo "TAG=$TAG" >> $GITHUB_ENV
         echo "DOCKER_IMAGE_NAME=$DOCKER_IMAGE_NAME" >> $GITHUB_ENV
 
-        docker build -f ${{ inputs.dockergile_path }} -t $DOCKER_IMAGE_NAME .
+        docker build -f ${{ inputs.dockerfile_path }} -t $DOCKER_IMAGE_NAME .
       shell: bash
