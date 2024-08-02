@@ -14,4 +14,4 @@ runs:
         echo ${{ inputs.docker_username }} | docker login -u ${{ inputs.docker_username }} --password-stdin
         docker tag $DOCKER_IMAGE_NAME ${{ inputs.docker_username }}/${{ inputs.image_name }}
         docker push ${{ inputs.docker_username }}/${{ inputs.image_name }}
-
+      shell: bash
